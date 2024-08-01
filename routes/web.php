@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BelajarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// route resource = mewakili method get, post,put & delete
+
+
+Route::resource('belajar', BelajarController::class);
+Route::resource('user', UserController::class);
+
+Route::get('tambah', [\App\Http\Controllers\BelajarController::class, 'tambah']);
+Route::post('store_tambah', [\App\Http\Controllers\BelajarController::class, 'storeTambah'])->name('store_tambah');
+Route::get('kurang', [\App\Http\Controllers\BelajarController::class, 'kurang']);
+Route::post('store_kurang', [\App\Http\Controllers\BelajarController::class, 'storeKurang'])->name('store_kurang');
+Route::get('kali', [\App\Http\Controllers\BelajarController::class, 'kali']);
+Route::post('store_kali', [\App\Http\Controllers\BelajarController::class, 'storeKali'])->name('store_kali');
+Route::get('bagi', [\App\Http\Controllers\BelajarController::class, 'bagi']);
+Route::post('store_bagi', [\App\Http\Controllers\BelajarController::class, 'storeBagi'])->name('store_bagi');
 
 Route::get('/', function () {
     return view('welcome');
