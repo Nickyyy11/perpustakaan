@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // Sama seperti perintah SELECT * FROM users;
-        $users = User::get();
-        return view('user.index', compact('users'));
+        return view('layout.app');
     }
 
     /**
@@ -26,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        //
     }
 
     /**
@@ -37,24 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $user = new User;
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->password = $request->password;
-        // $user->save();
-
-        //cara ke dua
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
-
-        return redirect()->to('user');
-
-        //cara ketiga
-        // User::create($request->all());
+        //
     }
 
     /**
@@ -76,11 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // cara pertama
-        // $edit = User::where('id',$id)->first();
-
-        $edit = User::find($id);
-        return view('user.edit', compact('edit'));
+        //
     }
 
     /**
@@ -92,13 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        User::where('id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => ($request->password ?? $user->password), // jika password tidak diisi maka akan menggunakan password yang lama
-        ]);
-        return redirect()->to('user')->with('message', 'Data berhasil diubah');
+        //
     }
 
     /**
@@ -109,7 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-        return redirect()->to('user')->with('message', 'Data berhasil di hapus');
+        //
     }
 }
