@@ -6,6 +6,7 @@ use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,10 @@ Route::resource('belajar', BelajarController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('user', UserController::class);
 Route::resource('dashboard', DashboardController::class);
+Route::resource('book', BooksController::class);
 
 Route::get('login', [LoginController::class, 'index']);
+Route::post('actionLogin', [LoginController::class, 'actionLogin'])->name('actionLogin');
 Route::get('tambah', [BelajarController::class, 'tambah']);
 Route::post('store_tambah', [BelajarController::class, 'storeTambah'])->name('store_tambah');
 Route::get('kurang', [BelajarController::class, 'kurang']);
